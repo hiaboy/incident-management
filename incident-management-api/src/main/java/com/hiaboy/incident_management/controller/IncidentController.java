@@ -7,9 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +21,7 @@ public class IncidentController {
 
     Logger logger = LogManager.getLogger(IncidentController.class);
 
-    @RequestMapping("incident/getList")
+    @GetMapping("incident/getList")
     public Map<String, Object> getList(HttpServletRequest request) {
         Map<String, Object> result = new HashMap<>();
         List<IncidentModel> list = incidentSercice.getList();
@@ -32,7 +30,7 @@ public class IncidentController {
         return result;
     }
 
-    @RequestMapping("incident/create")
+    @PutMapping("incident/create")
     public Map<String, Object> create(HttpServletRequest request, @RequestBody IncidentModel incidentModel) {
         Map<String, Object> result = new HashMap<>();
         try {
@@ -50,7 +48,7 @@ public class IncidentController {
         return result;
     }
 
-    @RequestMapping("incident/modify")
+    @PutMapping("incident/modify")
     public Map<String, Object> modify(HttpServletRequest request, @RequestBody IncidentModel incidentModel) {
         Map<String, Object> result = new HashMap<>();
         try {
@@ -71,16 +69,11 @@ public class IncidentController {
         return result;
     }
 
-    @RequestMapping("incident/delete")
-    public Map<String, Object> delete(HttpServletRequest request, @RequestBody IncidentModel incidentModel) {
+    @DeleteMapping("incident/delete/{id}")
+    public Map<String, Object> delete(HttpServletRequest request, @PathVariable Long id) {
         Map<String, Object> result = new HashMap<>();
         try {
-            if (null == incidentModel.getId()) {
-                result.put("status", -1);
-                result.put("message", "删除失败，id不能为空！");
-                return result;
-            }
-            incidentSercice.delete(incidentModel.getId());
+            incidentSercice.delete(id);
         } catch (NoSuchElementException e) {
             result.put("status", -1);
             result.put("message", "删除失败，事件不存在！");
