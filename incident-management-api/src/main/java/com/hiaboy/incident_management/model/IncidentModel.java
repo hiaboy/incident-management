@@ -1,9 +1,7 @@
 package com.hiaboy.incident_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -19,10 +17,14 @@ public class IncidentModel {
 
     private String createdBy;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     private String updatedBy;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdate;
 
     public Long getId() {
