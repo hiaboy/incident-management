@@ -8,12 +8,12 @@
   
   ` 
   
-  表现层： 接收用户请求，调用业务逻辑层处理业务逻辑，返回处理结果。
-  
-  业务逻辑层：要负责对数据层的操作，即把数据层的操作进行组合处理。
-  
-  数据访问层：主要负责对非原始数据（数据库或者文本文件等存放数据的形式）的操作，而不是指原始数据。
-  也就是说，是对数据库的操作，而不是数据。具体为业务逻辑层或表示层提供数据服务。
+	  表现层： 接收用户请求，调用业务逻辑层处理业务逻辑，返回处理结果。
+	  
+	  业务逻辑层：要负责对数据层的操作，即把数据层的操作进行组合处理。
+	  
+	  数据访问层：主要负责对非原始数据（数据库或者文本文件等存放数据的形式）的操作，而不是指原始数据。
+	  也就是说，是对数据库的操作，而不是数据。具体为业务逻辑层或表示层提供数据服务。
   
   `
 
@@ -77,19 +77,19 @@
   数据库设计：
   `
   
-  id Long primarykey; comment 'id'
-  
-  incident_name varchar2(50); comment '事件名称'
-  
-  incident_content  varchar2(200); comment '事件内容'
-  
-  created_by  varchar2(50); comment '创建人'
-  
-  create_date datetime;  comment '创建时间'
-  
-  updated_by varchar2(50);  comment '更新人'
-  
-  last_update datetime;  comment '更新时间'
+	  id Long primarykey; comment 'id'
+	  
+	  incident_name varchar2(50); comment '事件名称'
+	  
+	  incident_content  varchar2(200); comment '事件内容'
+	  
+	  created_by  varchar2(50); comment '创建人'
+	  
+	  create_date datetime;  comment '创建时间'
+	  
+	  updated_by varchar2(50);  comment '更新人'
+	  
+	  last_update datetime;  comment '更新时间'
 
   `
   
@@ -103,6 +103,7 @@
   
 ####  测试案例：
   `
+  
 	  新增：1.新增一个不存在的事件；2.新增一个存在的事件名称。
 	  
 	  变更：1.只变更内容；2.变更名称不与其他事件名称冲突；3.变更名称且与其他事件名称冲突；
