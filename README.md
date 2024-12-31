@@ -119,7 +119,10 @@
 	  EXPOSE 8080
 		
 	  ENTRYPOINT ["java", "-jar", "/app/incident-management.jar"]
+
+   
    DockerFile文件创建完成后，执行下面命令生成镜像
+   
           docker build -t incident-management:1.0.0 .
 	  镜像创建成功执行下面命令启动镜像
           docker run -d -p 8080:8080 --name incident-management incident-management:1.0.0
