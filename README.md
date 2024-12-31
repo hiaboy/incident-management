@@ -108,7 +108,24 @@
 ### 部署及发布
   
 	  部署
-	  本系统可以使用docker部署，新建DockerFile文件，基于镜像源，将构建包放到镜像部署目录下，创建新镜像，然后启动镜像。
+	  本系统可以使用docker部署，新建DockerFile文件，基于镜像源，将构建包放到镜像部署目录下，创建新镜像，然后启动镜像,下面是DockerFile镜像内容。
+
+          FROM openjdk:17-jdk-alpine
+ 
+	  WORKDIR /app
+		
+	  COPY target/incident-management.jar /app/incident-management.jar
+		
+	  EXPOSE 8080
+		
+	  ENTRYPOINT ["java", "-jar", "/app/incident-management.jar"]
+   DockerFile文件创建完成后，执行下面命令生成镜像
+          docker build -t /incident-management:1.0.0 .
+	  镜像创建成功执行下面命令启动镜像
+          docker run -d -p 8080:8080 --name incident-management your-dockerhub-username/incident-management:1.0.0
+
+
+
   
    
   
