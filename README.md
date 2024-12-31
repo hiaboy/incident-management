@@ -1,2 +1,4 @@
 # incident-management
-incident management
+## 事件管理系统
+### 简介
+·这是一个事件管理系统，该系统支持事件列表查询，事件新增，事件修改以及事件删除·
